@@ -32,8 +32,8 @@ export default function Logo() {
       className={logoClassName}
       alt='logo'
       src='/images/logo.svg'
-      width={240}
-      height={80}
+      width={200}
+      height={120}
       priority
     />
   );

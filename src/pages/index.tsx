@@ -58,24 +58,24 @@ export default function IndexPage({
             )}
           >
             <article className='layout'>
-              <h1
-                className='mt-1 text-3xl md:text-5xl 2xl:text-6xl'
-                data-fade='2'
-                data-testid='home-verse'
-              >
-                <Trans
-                  text={translations['home-verse']}
-                  components={[
-                    <Accent key='1' />,
-                    <Accent key='1' />,
-                    <br key='1' />,
-                    <span
-                      key='1'
-                      className='mt-1 max-w-4xl leading-relaxed text-gray-700 dark:text-gray-200 md:mt-1 md:text-lg 2xl:text-xl'
-                    />,
-                  ]}
-                />
-              </h1>
+                <h1
+                  className='mt-1 text-3xl md:text-5xl 2xl:text-6xl'
+                  data-fade='2'
+                  data-testid='home-verse'
+                >
+                  <Trans
+                    text={translations['home-verse']}
+                    components={[
+                      <Accent key='1' />,
+                      <Accent key='1' />,
+                      <br key='1' />,
+                      <span
+                        key='1'
+                        className='mt-1 max-w-4xl leading-relaxed text-gray-700 dark:text-gray-200 md:mt-1 md:text-lg 2xl:text-xl'
+                      />,
+                    ]}
+                  />
+                </h1>
               <div
                 data-fade='5'
                 className='mt-8 flex flex-wrap gap-4 md:!text-lg'
@@ -104,22 +104,22 @@ export default function IndexPage({
             >
               <IoArrowDownOutline className='h-8 w-8 animate-bounce md:h-10 md:w-10' />
             </UnstyledLink>
-            {settings['show-hero-image'] === 'true' && (
+            {
               <HeroImage
                 className={clsx(
-                  'absolute right-0 bottom-5 md:bottom-0',
+                  'absolute bottom-10 right-0 md:bottom-10',
                   'w-[calc(100%-3rem)] md:w-[600px] 2xl:w-[900px]',
                   'opacity-35 z-[-1] dark:opacity-40'
                 )}
               />
-            )}
+            }
           </section>
           <InView triggerOnce rootMargin='-40% 0px'>
             {({ ref, inView }) => (
               <section
                 ref={ref}
                 id='intro'
-                className={clsx('py-20', inView && 'fade-in-start')}
+                className={clsx('py-10', inView && 'fade-in-start')}
               >
                 <article
                   className={clsx(
