@@ -21,22 +21,8 @@ class MyDocument extends Document {
             rel='apple-touch-icon'
             href='/favicon/apple-icon-180x180.png'
           ></link>
-          <meta
-            name='theme-color'
-            media='(prefers-color-scheme: light)'
-            content='white'
-          />
-          <meta
-            name='theme-color'
-            media='(prefers-color-scheme: dark)'
-            content='black'
-          />
-          <meta name='mobile-web-app-capable' content='yes' />
-          {/*Dark theme color for Android */}
-          <meta
-            name='apple-mobile-web-app-status-bar-style'
-            content='black-translucent'
-          />
+
+          <meta name='theme-color' content='#222' />
           <Script
             src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_ANALYTICS_ID}`}
             strategy='afterInteractive'
