@@ -1,20 +1,62 @@
-<?xml version="1.0" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
- "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
-<svg version="1.0" xmlns="http://www.w3.org/2000/svg"
- width="64.000000pt" height="64.000000pt" viewBox="0 0 64.000000 64.000000"
- preserveAspectRatio="xMidYMid meet">
-<g transform="translate(0.000000,64.000000) scale(0.100000,-0.100000)"
-fill="#000000" stroke="none">
-<path d="M219 616 c-89 -32 -145 -83 -185 -170 -23 -52 -26 -67 -22 -140 7
--123 55 -200 160 -257 56 -30 72 -33 143 -34 69 0 88 4 139 30 65 33 118 88
-149 155 30 65 29 177 -2 248 -30 66 -113 144 -177 166 -57 19 -155 20 -205 2z
-m62 -205 c33 -34 35 -43 14 -61 -13 -11 -20 -9 -43 13 -57 55 -121 18 -109
--61 11 -67 61 -81 108 -30 27 31 30 32 46 15 16 -16 16 -20 3 -45 -36 -64
--161 -63 -200 1 -36 58 -20 145 32 181 13 9 43 16 71 16 40 0 53 -5 78 -29z
-m244 5 c27 -27 24 -56 -5 -56 -9 0 -25 9 -35 20 -22 25 -68 23 -73 -2 -2 -13
-11 -21 58 -34 69 -19 96 -47 86 -89 -15 -59 -131 -82 -181 -35 -14 13 -25 31
--25 41 0 28 26 29 51 3 15 -16 33 -24 55 -24 65 0 51 42 -20 61 -48 13 -86 44
--86 71 0 10 11 30 25 43 35 36 115 36 150 1z"/>
-</g>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   version="1.0"
+   width="64.000000pt"
+   height="64.000000pt"
+   viewBox="0 0 64.000000 64.000000"
+   preserveAspectRatio="xMidYMid meet"
+   id="svg1"
+   sodipodi:docname="favicon.svg"
+   inkscape:version="1.3.1 (91b66b0, 2023-11-16)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="pt"
+     inkscape:zoom="2.765625"
+     inkscape:cx="30.19209"
+     inkscape:cy="23.683616"
+     inkscape:window-width="1456"
+     inkscape:window-height="772"
+     inkscape:window-x="2618"
+     inkscape:window-y="672"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="g1" />
+  <g
+     transform="translate(0.000000,64.000000) scale(0.100000,-0.100000)"
+     fill="#000000"
+     stroke="none"
+     id="g1">
+    <ellipse
+       style="fill:#000000;fill-opacity:1;stroke:#4a5b76;stroke-width:10.5;stroke-opacity:0"
+       id="path1"
+       transform="scale(1,-1)"
+       ry="290.16946"
+       rx="298.30508"
+       cy="-320"
+       cx="320" />
+    <text
+       xml:space="preserve"
+       style="font-size:360px;line-height:0;fill:#f9f9f9;fill-opacity:1;stroke:#4a5b76;stroke-width:10.5;stroke-opacity:0"
+       x="66.787109"
+       y="-189.13086"
+       id="text2"
+       transform="scale(1,-1)"><tspan
+         id="tspan2"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:360px;line-height:0;font-family:'Noto Sans Miao';-inkscape-font-specification:'Noto Sans Miao';fill:#f9f9f9;stroke-width:10.5"
+         x="66.787109"
+         y="-189.13086"
+         sodipodi:role="line">CN</tspan></text>
+  </g>
 </svg>

@@ -1,5 +1,5 @@
 <div align="center">
-  <h1>churchinsydney.org</h1>
+  <h1>churchinnewcastle.org</h1>
   <p>💠 Build with Next.js, Directus.io, TS, GraphQL, Tailwind CSS.</p>
 </div>
 
