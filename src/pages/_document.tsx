@@ -22,6 +22,14 @@ class MyDocument extends Document {
             href='/favicon/apple-icon-180x180.png'
           ></link>
           <meta name='theme-color' content='#fff' />
+          <meta name='mobile-web-app-capable' content='yes' />
+          <meta name='theme-color' content='#121212' />{' '}
+          {/*Dark theme color for Android */}
+          <meta
+            name='apple-mobile-web-app-status-bar-style'
+            content='black-translucent'
+          />{' '}
+          {/*iOS status bar*/}
           <Script
             src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_ANALYTICS_ID}`}
             strategy='afterInteractive'

@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "@headlessui/react": "^1.7.10",
+    "@sanity/cli": "^3.78.0",
     "clsx": "^1.2.1",
     "date-fns": "^2.29.3",
     "graphql": "^16.6.0",

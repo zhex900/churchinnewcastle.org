@@ -16,7 +16,8 @@
     "jsx": "preserve",
     "baseUrl": "./src",
     "paths": {
-      "@/*": ["*"]
+      "@/*": ["*"],
+      "react": [ "./node_modules/@types/react" ]
     },
     "incremental": true,
     "types": ["node", "vitest/globals", "cypress"]
