@@ -18,9 +18,7 @@ export default function MembersPassword({
   redirectTo: string;
 }) {
   const { translations, settings } = useContext(AppContext);
-  const [helperText, setHelperText] = useState(
-    translations['post-member-login-helper-text']
-  );
+  const [helperText, setHelperText] = useState('member-login-helper-text');
 
   const [password, setPassword] = useState('');
   const [, setCookie, removeCookie] = useCookies([COOKIES.MEMBERS_PASSWORD]);
@@ -28,9 +26,7 @@ export default function MembersPassword({
   const memberPassword = settings[COOKIES.MEMBERS_PASSWORD];
   const onSubmit = () => {
     if (password !== memberPassword) {
-      setHelperText(
-        translations['post-member-login-incorrect-password-please-try-again']
-      );
+      setHelperText('post-member-login-incorrect-password-please-try-again');
       return;
     }
     removeCookie(COOKIES.MEMBERS_PASSWORD);
@@ -41,7 +37,7 @@ export default function MembersPassword({
   };
 
   useEffect(() => {
-    setHelperText(translations['post-member-login-helper-text']);
+    setHelperText('post-member-login-helper-text');
   }, [translations]);
 
   return (
@@ -52,7 +48,7 @@ export default function MembersPassword({
         <section className=''>
           <div className='layout flex flex-col items-center py-20 text-center'>
             <h1>
-              <Accent>{translations['post-members-login']}</Accent>
+              <Accent>post-members-login</Accent>
             </h1>
             <div
               className={clsx(
@@ -75,7 +71,7 @@ export default function MembersPassword({
                     )}
                     type='password'
                     aria-label='members-password'
-                    placeholder={translations['post-member-login-password']}
+                    placeholder={'post-member-login-password'}
                     required
                     onChange={(e) => setPassword(e.target.value)}
                   />
@@ -89,7 +85,7 @@ export default function MembersPassword({
                         )}
                       />
                       <Button aria-label='submit-button' onClick={onSubmit}>
-                        {translations['common-submit']}
+                        Submit
                       </Button>
                     </div>
                   </div>

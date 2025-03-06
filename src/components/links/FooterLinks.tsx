@@ -9,7 +9,7 @@ import Tooltip from '@/components/tooltip/Tooltip';
 import { AppContext } from '@/context/AppContext';
 
 export default function FooterLinks() {
-  const { translations: t, links: footerLinks } = useContext(AppContext);
+  const { links: footerLinks } = useContext(AppContext);
   const isMobile = useMediaQuery();
   const [mounted, setMounted] = useState(false);
 
@@ -23,7 +23,7 @@ export default function FooterLinks() {
         .filter(({ mobile }) => !mobile)
         .map(({ href }) => ({
           href,
-          text: t[`common-${href.replace(/\//, '')}`],
+          text: href.replace(/\//, ''),
           tooltip: null,
         })),
       ...(footerLinks || []),

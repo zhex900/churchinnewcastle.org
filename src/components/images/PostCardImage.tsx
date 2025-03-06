@@ -20,10 +20,10 @@ function TopCornerIcon({ Icon }: { Icon: IconType }) {
         'mt-2 flex flex-wrap justify-end gap-y-1 gap-x-2 text-sm text-black dark:text-gray-100'
       )}
     >
-      <Icon
-        tabIndex={-1}
-        className='bg-opacity-80 text-2xl text-green-500 dark:!bg-opacity-60'
-      />
+      {Icon({
+        tabIndex: -1,
+        className: 'bg-opacity-80 text-2xl text-green-500 dark:!bg-opacity-60',
+      })}
     </div>
   );
 }
@@ -45,7 +45,6 @@ function CardLock({
 }
 
 export default function PostCardImage({ post }: { post: PostType }) {
-  const { settings } = useContext(AppContext);
   // const { haveAccess, isProtected } = useProtectPage(post.tags, settings);
   return (
     <>

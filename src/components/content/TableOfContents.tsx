@@ -21,7 +21,6 @@ export default function TableOfContents({
   activeSection,
   minLevel,
 }: TableOfContentsProps) {
-  const { translations: t } = React.useContext(AppContext);
   const lastPosition = React.useRef<number>(0);
 
   React.useEffect(() => {
@@ -61,7 +60,7 @@ export default function TableOfContents({
       className='hidden max-h-[calc(100vh-9rem-113px)] overflow-auto pb-4 lg:block'
     >
       <h3 className='text-gray-900 dark:text-gray-100 md:text-2xl'>
-        {t['post-table-of-contents']}
+        Table of contents
       </h3>
       <div className='mt-4 flex flex-col space-y-1 text-base'>
         {toc

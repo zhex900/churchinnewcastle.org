@@ -37,15 +37,15 @@ export default function SortListbox({
           >
             <span className='block truncate'>
               <span className='inline-flex items-center gap-2'>
-                <selected.icon />
+                {selected.icon({})}
                 {selected.name}
               </span>
             </span>
             <span className='pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2'>
-              <HiSelector
-                className='h-5 w-5 text-gray-400'
-                aria-hidden='true'
-              />
+              {HiSelector({
+                className: 'h-5 w-5 text-gray-400',
+                'aria-hidden': 'true',
+              })}
             </span>
           </Listbox.Button>
           <Transition
@@ -84,7 +84,10 @@ export default function SortListbox({
                             'absolute inset-y-0 left-0 flex items-center pl-3 text-primary-500 dark:text-primary-300'
                           )}
                         >
-                          <HiCheck className='h-5 w-5' aria-hidden='true' />
+                          {HiCheck({
+                            className: 'h-5 w-5',
+                            'aria-hidden': 'true',
+                          })}
                         </span>
                       ) : null}
                     </>

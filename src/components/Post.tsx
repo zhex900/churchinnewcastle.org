@@ -27,7 +27,6 @@ type PostProps = {
 };
 
 export default function Post({ post, recommendations }: PostProps) {
-  const { translations: t } = useContext(AppContext);
   const [toc, setToc] = useState<HeadingScrollSpy>([]);
   const [lastUpdated, setLastUpdated] = useState('');
 
@@ -92,7 +91,7 @@ export default function Post({ post, recommendations }: PostProps) {
               {post.dateUpdated && (
                 <div className='mt-2 flex flex-wrap gap-2 text-sm italic text-gray-400 dark:text-gray-500'>
                   <p>
-                    {t['post-last-updated']}:{' '}
+                    Last updated:{' '}
                     {!isSameDay(
                       new Date(post.dateCreated),
                       new Date(post.dateUpdated)
@@ -102,7 +101,7 @@ export default function Post({ post, recommendations }: PostProps) {
 
                         DATE_FORMAT
                       )}, `}
-                    {`${lastUpdated} ${t['post-ago']}`}
+                    {`${lastUpdated} ago`}
                   </p>
                 </div>
               )}
@@ -141,7 +140,7 @@ export default function Post({ post, recommendations }: PostProps) {
             {recommendations.length > 0 && (
               <div className='mt-20'>
                 <h2>
-                  <Accent>{t['post-you-might-also-like']}</Accent>
+                  <Accent>You might also like</Accent>
                 </h2>
                 <ul className='mt-4 grid gap-4 sm:grid-cols-2 xl:grid-cols-3'>
                   {recommendations.map((post, i) => (

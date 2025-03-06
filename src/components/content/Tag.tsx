@@ -1,8 +1,6 @@
 import clsx from 'clsx';
 import * as React from 'react';
 
-import { AppContext } from '@/context/AppContext';
-
 export default function Tag({
   children,
   className,
@@ -28,7 +26,6 @@ export function SkipNavTag({
   children,
   ...rest
 }: React.ComponentPropsWithoutRef<'a'>) {
-  const { translations: t } = React.useContext(AppContext);
   return (
     <>
       <a
@@ -42,7 +39,7 @@ export function SkipNavTag({
         )}
         {...rest}
       >
-        {t['common-skip-tag']}
+        Skip tag
       </a>
       {children}
       <div id='skip-tags' className='hidden' />

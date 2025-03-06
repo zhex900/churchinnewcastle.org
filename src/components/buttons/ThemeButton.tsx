@@ -20,7 +20,7 @@ export default function ThemeButton() {
       )}
       onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
     >
-      {theme === 'light' ? <FiMoon size={20} /> : <FiSun size={20} />}
+      {theme === 'light' ? FiMoon({ size: 20 }) : FiSun({ size: 20 })}
     </button>
   );
 }

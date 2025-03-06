@@ -50,7 +50,7 @@ export default function Button({
             'text-black dark:text-white'
           )}
         >
-          <ImSpinner2 className='animate-spin' />
+          {ImSpinner2({ className: 'animate-spin' })}
         </div>
       )}
       {children}

@@ -9,8 +9,8 @@ import useProtectPage from '@/hooks/useProtectPage';
 import MembersPassword from '@/components/MembersPassword';
 import Post from '@/components/Post';
 
-import { getPostBySlug } from '@/cms';
-import { getPostsSlugs, getSettings } from '@/cms';
+// import { getPostBySlug } from '@/cms';
+// import { getPostsSlugs, getSettings } from '@/cms';
 import { AppContext } from '@/context/AppContext';
 
 import { PostType, Settings, Translations } from '@/types/types';
@@ -64,7 +64,11 @@ export default function SinglePostPage({
 }
 
 export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
-  const slugs = await getPostsSlugs();
+  const slugs = [
+    {
+      slug: 'test',
+    },
+  ]; // await getPostsSlugs();
 
   return {
     paths: flatten(
@@ -90,22 +94,23 @@ export async function getStaticProps({
   params: { slug: string };
   preview?: boolean;
 }) {
-  const post = await getPostBySlug(params?.slug as string, locale || 'en');
+  const post = null; //[]; //await getPostBySlug(params?.slug as string, locale || 'en');
 
   return {
     props: {
       preview,
-      post: post
-        ? {
-            ...post,
-            body: await parseMDX(post.body),
-          }
-        : null,
+      post,
+      // post: post
+      //   ? {
+      //       ...post,
+      //       body: await parseMDX(post.body),
+      //     }
+      //   : null,
       recommendations: await getRecommendations(
         params?.slug as string,
         locale || 'en'
       ),
-      settings: await getSettings(),
+      settings: {}, //await getSettings(),
       translations: {},
     },
   };

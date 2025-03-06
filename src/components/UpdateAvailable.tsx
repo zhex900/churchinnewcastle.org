@@ -4,7 +4,6 @@ import { useContext, useEffect, useState } from 'react';
 import { AppContext } from '@/context/AppContext';
 
 export default function UpdateAvailable({ className }: { className?: string }) {
-  const { translations: t } = useContext(AppContext);
   const [isOpen, setIsOpen] = useState(false);
   const { hasNewDeploy } = useHasNewDeploy();
 
@@ -42,10 +41,10 @@ export default function UpdateAvailable({ className }: { className?: string }) {
         </div>
         <div className='ml-3 text-sm font-normal'>
           <span className='mb-1 text-sm font-semibold text-gray-900 dark:text-white'>
-            {t['common-update-available']}
+            Update available
           </span>
           <div className='mb-2 text-sm font-normal'>
-            {t['common-update-available-description']}
+            A new version of the site is available. Refresh the page to get the
           </div>
           <div className='grid grid-cols-2 gap-2'>
             <div>
@@ -57,7 +56,7 @@ export default function UpdateAvailable({ className }: { className?: string }) {
                   setIsOpen(false);
                 }}
               >
-                {t['common-update']}
+                Update
               </a>
             </div>
             <div>
@@ -68,7 +67,7 @@ export default function UpdateAvailable({ className }: { className?: string }) {
                   setIsOpen(false);
                 }}
               >
-                {t['common-update-not-now']}
+                Update not now
               </a>
             </div>
           </div>
@@ -82,7 +81,7 @@ export default function UpdateAvailable({ className }: { className?: string }) {
             setIsOpen(false);
           }}
         >
-          <span className='sr-only'> {t['common-close']}</span>
+          <span className='sr-only'>Close</span>
           <svg
             className='h-5 w-5'
             fill='currentColor'

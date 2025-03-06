@@ -1,5 +1,3 @@
-import { parseTranslation } from '../locale';
-
 import { PostType } from '@/types/types';
 
 export const postFields = `
@@ -45,7 +43,7 @@ export type PostsGraphQLResponse = PostGraphQLResponse[];
 type TransformedPostType = Omit<PostGraphQLResponse, 'translations'> &
   PostTranslation;
 
-export const transformPost = (post: TransformedPostType) => {
+export const transformPost = (post: any) => {
   return {
     ...post,
     banner: `${process.env.CMS_API_ENDPOINT}/assets/${post.banner.id}`,
@@ -53,5 +51,5 @@ export const transformPost = (post: TransformedPostType) => {
 };
 
 export const transformPosts = (posts: PostsGraphQLResponse): PostType[] => {
-  return parseTranslation(posts).map(transformPost);
+  return posts.map(transformPost);
 };
