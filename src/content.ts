@@ -6,4 +6,5 @@ export const homePageAboutUsSlides = [
   'https://picsum.photos/id/14/960/540',
 ];
 
+export const domain = 'churchinnewcastle.org';
 const meetings = [];

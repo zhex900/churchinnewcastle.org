@@ -1,9 +1,8 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { useContext } from 'react';
 
 import { SITE_TITLE } from '@/constants';
-import { AppContext } from '@/context/AppContext';
+import { domain } from '@/content';
 
 const defaultMeta = {
   title: SITE_TITLE,
@@ -23,12 +22,10 @@ type SeoProps = {
 } & Partial<typeof defaultMeta>;
 
 export default function Seo(props: SeoProps) {
-  const { settings } = useContext(AppContext);
-  if (settings.domain) {
-    defaultMeta.siteName = settings.domain;
-    defaultMeta.url = `https://${settings.domain}/`;
-    defaultMeta.image = `https://${settings.domain}/favicon/apple-icon-180x180.png`;
-  }
+  defaultMeta.siteName = domain;
+  defaultMeta.url = `https://${domain}/`;
+  defaultMeta.image = `https://${domain}/favicon/apple-icon-180x180.png`;
+
   const router = useRouter();
   const meta = {
     ...defaultMeta,

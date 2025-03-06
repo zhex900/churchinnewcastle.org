@@ -20,14 +20,14 @@ export default function EventsPage({
   posts: PostsPropsType['posts'];
   tags: PostsPropsType['tags'];
 }) {
-  console.log('posts', slug, paths[slug].filter, posts);
+  console.log('posts', slug, paths[slug]?.filter, posts);
   return (
     <Posts
       {...{
         posts,
         tags,
-        title: paths[slug].title,
-        filter: paths[slug].filter,
+        title: paths[slug]?.title || '',
+        filter: paths[slug]?.filter || '',
       }}
     />
   );

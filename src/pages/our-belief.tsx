@@ -59,51 +59,38 @@ export default function OurBeliefsPage({ settings }: { settings: Settings }) {
   };
 
   return (
-    <AppContext.Provider value={{ settings }}>
-      <Layout>
-        <Seo templateTitle={'Our belief'} description={'Our belief'} />
+    <Layout>
+      <Seo templateTitle={'Our belief'} description={'Our belief'} />
 
-        <main>
-          <section className={clsx(isLoaded && 'fade-in-start')}>
-            <div className='layout min-h-main py-20'>
-              <h1 className='mt-1' data-fade='1'>
-                <Accent>{header.text}</Accent>
-              </h1>
-              <p className='mt-1' data-fade='1'>
-                <Accent>{header.ref}</Accent>
-              </p>
-              <div className='mt-4' data-fade='2'>
-                <article className=''>
-                  <ul
-                    className='mt-12 grid gap-4 sm:grid-cols-1 xl:grid-cols-2'
-                    data-fade='5'
-                  >
-                    {ourBeliefs.map(({ text, ref }, i) => (
-                      <li className='mt-5' key={ref}>
-                        <p data-fade={i} className='text-xl md:text-2xl'>
-                          {text} <br />
-                          <span className='text-base md:text-sm'>{ref}</span>
-                        </p>
-                      </li>
-                    ))}
-                  </ul>
-                </article>
-              </div>
+      <main>
+        <section className={clsx(isLoaded && 'fade-in-start')}>
+          <div className='layout min-h-main py-20'>
+            <h1 className='mt-1' data-fade='1'>
+              <Accent>{header.text}</Accent>
+            </h1>
+            <p className='mt-1' data-fade='1'>
+              <Accent>{header.ref}</Accent>
+            </p>
+            <div className='mt-4' data-fade='2'>
+              <article className=''>
+                <ul
+                  className='mt-12 grid gap-4 sm:grid-cols-1 xl:grid-cols-2'
+                  data-fade='5'
+                >
+                  {ourBeliefs.map(({ text, ref }, i) => (
+                    <li className='mt-5' key={ref}>
+                      <p data-fade={i} className='text-xl md:text-2xl'>
+                        {text} <br />
+                        <span className='text-base md:text-sm'>{ref}</span>
+                      </p>
+                    </li>
+                  ))}
+                </ul>
+              </article>
             </div>
-          </section>
-        </main>
-      </Layout>
-    </AppContext.Provider>
+          </div>
+        </section>
+      </main>
+    </Layout>
   );
-}
-
-export async function getStaticProps({ locale }: { locale: string }) {
-  return {
-    props: {
-      settings: {
-        locale,
-        title: 'Our belief',
-      },
-    },
-  };
 }
