@@ -53,43 +53,43 @@ const refreshToken = async () => {
     process.env.REFRESH_TOKEN = auth_refresh.refresh_token;
   }
 };
-
-export const request = async <T>(
-  options: RequestOptions,
-  retryCount = 1
-): Promise<T | undefined> => {
-  // first authentication
-  if (!process.env.ACCESS_TOKEN) {
-    await auth();
-  }
-
-  const token = process.env.ACCESS_TOKEN;
-  try {
-    const result = await baseRequest({
-      url: `${BASE_URL}/graphql`,
-      ...options,
-      requestHeaders: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-
-    return result;
-  } catch (e: unknown) {
-    const error = e as GraphQLResponse;
-
-    if ([401, 403].includes(error.response.status)) {
-      if (retryCount > 3) {
-        throw new Error('Too many retries');
-      }
-      if (retryCount > 0) {
-        await auth();
-        return request(options, retryCount++);
-      }
-      await refreshToken();
-      return request(options, retryCount++);
-    }
-
-    // eslint-disable-next-line no-console
-    console.log(e);
-  }
-};
+//
+// export const request = async <T>(
+//   options: RequestOptions,
+//   retryCount = 1
+// ): Promise<T | undefined> => {
+//   // first authentication
+//   if (!process.env.ACCESS_TOKEN) {
+//     await auth();
+//   }
+//
+//   const token = process.env.ACCESS_TOKEN;
+//   try {
+//     const result = await baseRequest({
+//       url: `${BASE_URL}/graphql`,
+//       ...options,
+//       requestHeaders: {
+//         Authorization: `Bearer ${token}`,
+//       },
+//     });
+//
+//     return result;
+//   } catch (e: unknown) {
+//     const error = e as GraphQLResponse;
+//
+//     if ([401, 403].includes(error.response.status)) {
+//       if (retryCount > 3) {
+//         throw new Error('Too many retries');
+//       }
+//       if (retryCount > 0) {
+//         await auth();
+//         return request(options, retryCount++);
+//       }
+//       await refreshToken();
+//       return request(options, retryCount++);
+//     }
+//
+//     // eslint-disable-next-line no-console
+//     console.log(e);
+//   }
+// };

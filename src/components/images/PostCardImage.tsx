@@ -46,13 +46,13 @@ function CardLock({
 
 export default function PostCardImage({ post }: { post: PostType }) {
   const { settings } = useContext(AppContext);
-  const { haveAccess, isProtected } = useProtectPage(post.tags, settings);
+  // const { haveAccess, isProtected } = useProtectPage(post.tags, settings);
   return (
     <>
       <Image
         noStyle
         className={clsx('pointer-events-none overflow-hidden rounded-t-md ', {
-          'blur-sm': !haveAccess,
+          // 'blur-sm': !haveAccess,
         })}
         url={post.banner}
         alt={post.slug}
@@ -60,7 +60,7 @@ export default function PostCardImage({ post }: { post: PostType }) {
         {...IMAGE_SIZE}
       />
       <div className='pointer-events-none overflow-hidden rounded-t-md'></div>
-      <CardLock haveAccess={haveAccess} isProtected={isProtected} />
+      {/*<CardLock haveAccess={haveAccess} isProtected={isProtected} />*/}
     </>
   );
 }

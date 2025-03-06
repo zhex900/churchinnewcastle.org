@@ -11,8 +11,6 @@ export default function ButtonStatus({
   status: statusType;
   setStatus: setStatusType;
 }) {
-  const { translations: t } = useContext(AppContext);
-
   useEffect(() => {
     if (status === 'success') {
       setTimeout(() => setStatus('idle'), 3000);
@@ -36,7 +34,7 @@ export default function ButtonStatus({
             ></path>
           </svg>
         </div>
-        {t['contact-us-success-message']}
+        Success
       </>
     );
   }
@@ -57,10 +55,10 @@ export default function ButtonStatus({
             ></path>
           </svg>
         </div>
-        {t['contact-us-error-message']}
+        Oops! Something went wrong
       </>
     );
   }
 
-  return <span>{t['common-submit']}</span>;
+  return <span>Submit</span>;
 }

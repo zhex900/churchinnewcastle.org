@@ -12,7 +12,7 @@ export const COOKIES = {
 };
 
 export const LAST_ORDER_INDEX = 999;
-export const SITE_TITLE = 'Church in Sydney';
+export const SITE_TITLE = 'Church in Newcastle';
 export const GRAPHQL_QUERY_LIMIT = 2;
 
 export const MAIL_ENDPOINT = 'https://api.sendinblue.com/v3/smtp/email';

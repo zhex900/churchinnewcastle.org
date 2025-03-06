@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import { useRouter } from 'next/router';
 import * as React from 'react';
+import { useEffect } from 'react';
 import {
   HiCalendar,
   HiEye,
@@ -21,7 +22,6 @@ import Seo from '@/components/Seo';
 import SortListbox, { SortOption } from '@/components/SortListbox';
 
 import { LAST_ORDER_INDEX } from '@/constants';
-import { AppContext } from '@/context/AppContext';
 
 import { PostType } from '@/types/types';
 
@@ -38,33 +38,30 @@ export default function Posts({
   title,
   filter = '',
 }: PostsPropsType) {
-  const { translations: t } = React.useContext(AppContext);
   const sortOptions = React.useMemo(() => {
-    // if (!components || components.length === 0) return text;
-
     return [
       {
         id: 'rank',
-        name: t['common-by-rank'],
+        name: 'Rank',
         icon: HiEye,
       },
       {
         id: 'start-date',
-        name: t['common-by-start-date'],
+        name: 'Start date',
         icon: HiCalendar,
       },
       {
         id: 'date-desc',
-        name: `${t['common-by-last-update']} ↓`,
+        name: `Desc ↓`,
         icon: HiOutlineChevronDoubleDown,
       },
       {
         id: 'date-asc',
-        name: `${t['common-by-last-update']} ↑`,
+        name: `Asc ↑`,
         icon: HiOutlineChevronDoubleUp,
       },
     ];
-  }, [t]) as Array<SortOption>;
+  }, []) as Array<SortOption>;
 
   const { route } = useRouter();
   const [sortOrder, setSortOrder] = React.useState<SortOption>(
@@ -84,11 +81,17 @@ export default function Posts({
   const [filteredPosts, setFilteredPosts] =
     React.useState<Array<PostType>>(posts);
 
+  useEffect(() => {
+    setSearch(filter);
+    setFilteredPosts(posts);
+  }, [filter, posts]);
+
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
   };
 
   React.useEffect(() => {
+    if (!posts) return;
     const results = posts.filter(
       (post) =>
         post.title.toLowerCase().includes(search.toLowerCase()) ||
@@ -136,7 +139,7 @@ export default function Posts({
     setSortOrder(
       sortOptions.find(({ id }) => id === sortOrder.id) || sortOrder
     );
-  }, [sortOptions, sortOrder, t]);
+  }, [sortOptions, sortOrder]);
 
   React.useEffect(() => setMounted(true), []);
   if (!mounted) return null;
@@ -191,7 +194,7 @@ export default function Posts({
                   className='mt-2 flex flex-wrap items-baseline justify-start gap-2 text-sm text-gray-600 dark:text-gray-300'
                   data-fade='2'
                 >
-                  <span className='font-medium'>{t['post-choose-topic']}:</span>
+                  <span className='font-medium'>Topics:</span>
                   <SkipNavTag>
                     {tags.map((tag) => (
                       <Tag
@@ -222,7 +225,7 @@ export default function Posts({
               data-fade='5'
               aria-label='post-cards'
             >
-              {filteredPosts.length > 0 ? (
+              {filteredPosts?.length > 0 ? (
                 filteredPosts.map((post) => (
                   <PostCard
                     key={post.slug}

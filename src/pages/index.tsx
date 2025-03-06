@@ -1,4 +1,6 @@
 import clsx from 'clsx';
+import NextImage from 'next/image';
+import * as React from 'react';
 import { IoArrowDownOutline } from 'react-icons/io5';
 import { InView } from 'react-intersection-observer';
 
@@ -7,34 +9,27 @@ import useLoaded from '@/hooks/useLoaded';
 
 import Accent from '@/components/Accent';
 import PostCard from '@/components/cards/PostCard';
+import { Carousel } from '@/components/Carousel';
 import HeroImage from '@/components/images/HeroImage';
 import Layout from '@/components/layout/Layout';
 import ButtonLink from '@/components/links/ButtonLink';
 import UnstyledLink from '@/components/links/UnstyledLink';
 import Seo from '@/components/Seo';
 import StructuredData from '@/components/StructuredData';
-import Trans from '@/components/translation/Trans';
+import Tooltip from '@/components/Tooltip';
 
-import {
-  getLinks,
-  getPostsByTags,
-  getSettings,
-  getTranslationsByNamespace,
-} from '@/cms';
+import { homePageAboutUsSlides } from '@/content';
 import { AppContext } from '@/context/AppContext';
 
-import { Links, PostType, Settings, Translations } from '@/types/types';
+import { Links, PostType, Settings } from '@/types/types';
 
 export default function IndexPage({
   currentEvents,
-  featuredPosts,
-  translations,
   links,
   settings,
 }: {
   currentEvents: PostType[];
   featuredPosts: PostType[];
-  translations: Translations;
   links: Links;
   settings: Settings;
 }) {
@@ -42,7 +37,6 @@ export default function IndexPage({
   return (
     <AppContext.Provider
       value={{
-        translations,
         links,
         settings,
       }}
@@ -53,29 +47,31 @@ export default function IndexPage({
         <main>
           <section
             className={clsx(
-              'min-h-main -mt-20 mb-20 flex flex-col justify-center',
+              'min-h-main mb-20 -mt-20 flex flex-col justify-center',
               isLoaded && 'fade-in-start'
             )}
           >
             <article className='layout'>
-                <h1
-                  className='mt-1 text-3xl md:text-5xl 2xl:text-6xl'
-                  data-fade='2'
-                  data-testid='home-verse'
-                >
-                  <Trans
-                    text={translations['home-verse']}
-                    components={[
-                      <Accent key='1' />,
-                      <Accent key='1' />,
-                      <br key='1' />,
-                      <span
-                        key='1'
-                        className='mt-1 max-w-4xl leading-relaxed text-gray-700 dark:text-gray-200 md:mt-1 md:text-lg 2xl:text-xl'
-                      />,
-                    ]}
-                  />
-                </h1>
+              <h2 className='text-2xl md:text-4xl 2xl:text-5xl' data-fade='1'>
+                Welcome!
+              </h2>
+              <h1
+                className='mt-1 text-3xl md:text-5xl 2xl:text-6xl'
+                data-fade='2'
+              >
+                To the church in <Accent>Newcastle</Accent>
+              </h1>
+              <p
+                className={clsx(
+                  'mt-4 w-2/3 text-gray-700 dark:text-gray-200 md:mt-6',
+                  'md:text-xl 2xl:text-2xl'
+                )}
+                data-fade='3'
+              >
+                We are believers in the Lord Jesus Christ and would like to
+                invite you to join us as we grow in Him through His word.
+              </p>
+
               <div
                 data-fade='5'
                 className='mt-8 flex flex-wrap gap-4 md:!text-lg'
@@ -83,43 +79,44 @@ export default function IndexPage({
                 <div className='group relative'>
                   <div
                     className={clsx(
+                      'absolute -inset-0.5 animate-tilt rounded blur',
+                      'bg-gradient-to-r from-primary-300 to-primary-400',
                       'dark:from-primary-200 dark:via-primary-300',
                       'opacity-75 transition duration-1000 group-hover:opacity-100 group-hover:duration-200'
                     )}
                   />
-                  <ButtonLink href='#intro'>
-                    {translations['home-welcome']}
-                  </ButtonLink>
+                  <ButtonLink href='#meetings'>Meetings</ButtonLink>
                 </div>
+                <ButtonLink href='#about-us'>About us</ButtonLink>
               </div>
             </article>
+            <HeroImage
+              className={clsx(
+                'absolute top-1/4 right-0 rotate-[6.00rad] md:bottom-10',
+                'w-[calc(100%-223rem)] md:w-[650px] 2xl:w-[700px]',
+                'opacity-35 z-[-1] dark:opacity-40'
+              )}
+            />
             <UnstyledLink
-              data-testid='home-scroll-down'
-              href='#intro'
+              href='#about-us'
               className={clsx(
                 'absolute bottom-2 left-1/2 -translate-x-1/2 md:bottom-10',
                 'cursor-pointer rounded-md transition-colors',
                 'hover:text-primary-300 focus-visible:text-primary-300'
               )}
             >
-              <IoArrowDownOutline className='h-8 w-8 animate-bounce md:h-10 md:w-10' />
+              {IoArrowDownOutline({
+                className: 'h-8 w-8 animate-bounce md:h-10 md:w-10',
+              })}
             </UnstyledLink>
-            {
-              <HeroImage
-                className={clsx(
-                  'absolute bottom-10 right-0 md:bottom-10',
-                  'w-[calc(100%-3rem)] md:w-[600px] 2xl:w-[900px]',
-                  'opacity-35 z-[-1] dark:opacity-40'
-                )}
-              />
-            }
           </section>
+
           <InView triggerOnce rootMargin='-40% 0px'>
             {({ ref, inView }) => (
               <section
                 ref={ref}
-                id='intro'
-                className={clsx('py-10', inView && 'fade-in-start')}
+                id='about-us'
+                className={clsx('py-20', inView && 'fade-in-start')}
               >
                 <article
                   className={clsx(
@@ -129,80 +126,103 @@ export default function IndexPage({
                   data-fade='0'
                 >
                   <div className='mt-8 h-full w-full md:mt-0'>
-                    <h2
-                      className='text-4xl md:text-6xl'
-                      data-testid='home-introduction-title'
-                    >
+                    <h2 className='text-4xl md:text-6xl'>
                       <Accent className='inline decoration-clone leading-snug dark:leading-none'>
-                        {translations['home-introduction-title']}
+                        Who we are
                       </Accent>
                     </h2>
-                    <div
-                      className='mt-4 text-base text-gray-600 dark:text-gray-300 md:text-lg'
-                      data-testid='home-quote'
-                    >
-                      {translations['home-quote']}
-                      <span className='italic'>
-                        {translations['home-quote-reference']}
-                      </span>
+                    <div className='mt-4 text-base text-gray-600 dark:text-gray-300 md:text-lg'>
+                      The{' '}
+                      <Tooltip
+                        withUnderline
+                        tipChildren={<>Acts: 8:1; Rev. 1:11</>}
+                      >
+                        <span>church in Newcastle</span>
+                      </Tooltip>{' '}
+                      is not our name—it’s our description. As such, it’s an
+                      inclusive title, not an exclusive one. We gather together
+                      simply as believers of the Lord in this city, and we
+                      receive as our brothers and sisters all who believe in
+                      Jesus Christ. Likewise, we warmly welcome guests and
+                      visitors who are not Christians.
                     </div>
                   </div>
-                  <div className='h-full w-full'>
-                    <ul className='relative h-full'>
-                      {featuredPosts.length > 1 && (
-                        <PostCard
-                          aria-label='featured post 1'
-                          className={clsx(
-                            'absolute max-w-[350px] transform-gpu',
-                            'top-1/2 translate-y-[-55%] md:translate-y-[-50%] lg:translate-y-[-60%]',
-                            'left-1/2 -translate-x-1/2 md:translate-x-[-50%] lg:translate-x-[-30%]',
-                            'rotate-3 md:rotate-6 lg:rotate-12',
-                            'pointer-events-none md:pointer-events-auto'
-                          )}
-                          post={featuredPosts[1]}
-                        />
-                      )}
-                      {featuredPosts.length > 0 && (
-                        <PostCard
-                          aria-label='featured post 2'
-                          className='mx-auto max-w-[350px]'
-                          post={featuredPosts[0]}
-                        />
-                      )}
-                    </ul>
+                  <div className='h-full w-full pl-40 '>
+                    <Carousel autoSlide={true}>
+                      {[
+                        ...homePageAboutUsSlides.map((url) => (
+                          <NextImage
+                            key={url}
+                            width={2000}
+                            height={800}
+                            src={`${url}`}
+                            alt={url}
+                            title={url}
+                            className='rounded-lg'
+                          />
+                        )),
+                      ]}
+                    </Carousel>
                   </div>
                 </article>
               </section>
             )}
           </InView>
-          {currentEvents.length > 0 && (
-            <InView triggerOnce rootMargin='-40% 0px'>
-              {({ ref, inView }) => (
-                <section
-                  ref={ref}
-                  className={clsx('py-20', inView && 'fade-in-start')}
-                >
-                  <article className='layout' data-fade='0'>
-                    <h2 className='text-2xl md:text-4xl' id='posts'>
-                      <Accent>{translations['home-current-events']}</Accent>
-                    </h2>
-                    <ul className='mt-4 grid gap-4 sm:grid-cols-2 xl:grid-cols-3'>
-                      {currentEvents.map((post, i) => (
-                        <PostCard
-                          key={post.slug}
-                          post={post}
-                          className={clsx(i > 2 && 'hidden sm:block')}
-                        />
-                      ))}
-                    </ul>
-                    <ButtonLink className='mt-4' href='/events'>
-                      {translations['home-see-more-events']}
-                    </ButtonLink>
-                  </article>
-                </section>
-              )}
-            </InView>
-          )}
+          <InView triggerOnce rootMargin='-40% 0px'>
+            {({ ref, inView }) => (
+              <section
+                ref={ref}
+                id='meetings'
+                className={clsx('py-20', inView && 'fade-in-start')}
+              >
+                <article className='layout' data-fade='0'>
+                  <h2 className='text-2xl md:text-4xl' id='blog'>
+                    <Accent>Weekly meetings</Accent>
+                  </h2>
+                  <ul className='mt-4 grid gap-4 sm:grid-cols-2 xl:grid-cols-3'>
+                    {[
+                      {
+                        banner: 'https://picsum.photos/id/14/960/540',
+                        slug: '',
+                        title: 'Prayer meeting',
+                        summary: 'Wednesday at 7:30pm',
+                        body: '',
+                        tags: ['meetings'],
+                        dateCreated: '2021-09-01',
+                        start: '2021-09-01',
+                      },
+                      {
+                        banner: 'https://picsum.photos/id/24/960/540',
+                        slug: '',
+                        title: 'Home bible study',
+                        summary: 'Friday with dinner at 6:30pm',
+                        body: '',
+                        tags: ['meetings'],
+                        dateCreated: '2021-09-01',
+                        start: '2021-09-01',
+                      },
+                      {
+                        banner: 'https://picsum.photos/id/25/960/540',
+                        slug: '',
+                        title: 'Worship',
+                        summary: 'Sunday at 10:30am',
+                        body: '',
+                        tags: ['meetings'],
+                        dateCreated: '2021-09-01',
+                        start: '2021-09-01',
+                      },
+                    ].map((post, i) => (
+                      <PostCard
+                        key={post.slug}
+                        post={post}
+                        className={clsx(i > 2 && 'hidden sm:block')}
+                      />
+                    ))}
+                  </ul>
+                </article>
+              </section>
+            )}
+          </InView>
         </main>
       </Layout>
     </AppContext.Provider>
@@ -214,14 +234,25 @@ export async function getStaticProps({ locale }: { locale: string }) {
 
   return {
     props: {
-      currentEvents: await getPostsByTags(['Event'], locale),
-      featuredPosts: await getPostsByTags(['Featured'], locale),
-      settings: await getSettings(),
-      translations: await getTranslationsByNamespace(
-        ['home', 'common', 'post'],
-        locale
-      ),
-      links: await getLinks(locale),
+      currentEvents: [], //await getPostsByTags(['Event'], locale),
+      featuredPosts: [], //await getPostsByTags(['Featured'], locale),
+      settings: {
+        address: '1234 Main St, Springfield, IL 62701',
+        phone: '555-555-5555',
+        email: 'info@churchinnewcastle.org',
+      }, //await getSettings(),
+      translations: {
+        'home-verse':
+          'Welcome to <0>Our Church</0> where we <1>love</1> and <2>serve</2> the Lord.',
+        'home-introduction-title': 'Welcome to Our Church',
+        'home-current-events': 'Current Events',
+        'home-see-more-events': 'See more events',
+      },
+      //   // await getTranslationsByNamespace(
+      //   ['home', 'common', 'post'],
+      //   locale
+      // ),
+      links: [], //await getLinks(locale),
     },
   };
 }

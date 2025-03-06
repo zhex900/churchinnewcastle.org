@@ -10,8 +10,6 @@ import Tag from '@/components/content/Tag';
 import PostCardImage from '@/components/images/PostCardImage';
 import UnstyledLink from '@/components/links/UnstyledLink';
 
-import { AppContext } from '@/context/AppContext';
-
 import { PostType } from '@/types/types';
 type PostCardProps = {
   post: PostType;
@@ -36,7 +34,6 @@ export default function PostCard({
   const eventDate =
     post.start && post.end ? formatEventDate(post.start, post.end) : null;
 
-  const { translations: t } = useContext(AppContext);
   return (
     <li
       className={clsx(
@@ -82,7 +79,7 @@ export default function PostCard({
           <p className='mt-2 mb-2 text-xs '>
             {post.dateUpdated && (
               <span className='italic text-gray-400 dark:text-gray-500'>
-                {`${t['post-last-updated']}: ${lastUpdated} ${t['post-ago']}`}
+                {`Last updated: ${lastUpdated} ago`}
               </span>
             )}
           </p>

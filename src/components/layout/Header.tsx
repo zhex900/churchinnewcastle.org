@@ -1,14 +1,11 @@
 import clsx from 'clsx';
 import { useRouter } from 'next/router';
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import useMediaQuery from '@/hooks/useMediaQuery';
 
 import UnstyledLink from '@/components/links/UnstyledLink';
 
-import { AppContext } from '@/context/AppContext';
-
-import LocaleButton from '../buttons/LocaleButton';
 import ThemeButton from '../buttons/ThemeButton';
 import Logo from '../images/Logo';
 import PreviewTopBar from '../PreviewTopBar';
@@ -18,8 +15,6 @@ type HeaderProps = {
 };
 
 export default function Header({ large = false }: HeaderProps) {
-  const { translations: t } = useContext(AppContext);
-
   const router = useRouter();
   const arrOfRoute = router.route.split('/');
   const baseRoute = '/' + arrOfRoute[1];
@@ -61,7 +56,7 @@ export default function Header({ large = false }: HeaderProps) {
           </UnstyledLink>
           <ul className='flex items-center justify-between space-x-3 text-xs md:space-x-4 md:text-base'>
             {headerLinks.map(
-              ({ href, mobile }) =>
+              ({ href, mobile, label }) =>
                 ((isMobile && mobile) || !isMobile) && (
                   <li key={href}>
                     <UnstyledLink
@@ -80,7 +75,7 @@ export default function Header({ large = false }: HeaderProps) {
                           href === baseRoute && 'text-primary-300'
                         )}
                       >
-                        {t[`common-${href.replace(/\//, '')}`]}
+                        {label}
                       </span>
                     </UnstyledLink>
                   </li>
@@ -89,7 +84,6 @@ export default function Header({ large = false }: HeaderProps) {
           </ul>
           <div className='flex justify-between space-x-3'>
             <ThemeButton />
-            <LocaleButton />
           </div>
         </nav>
       </div>
@@ -98,9 +92,8 @@ export default function Header({ large = false }: HeaderProps) {
 }
 
 export const headerLinks = [
-  { href: '/our-belief', mobile: false },
-  { href: '/our-life', mobile: false },
-  { href: '/announcements', mobile: true },
-  { href: '/events', mobile: true },
-  { href: '/contact-us', mobile: false },
+  { href: '/our-belief', mobile: false, label: 'Our belief' },
+  { href: '/posts/truth-talks', mobile: true, label: 'Truth talks' },
+  { href: '/posts/events', mobile: true, label: 'Events' },
+  { href: '/contact-us', mobile: false, label: 'Contact us' },
 ];

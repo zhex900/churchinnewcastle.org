@@ -1,27 +1,17 @@
 import clsx from 'clsx';
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
-import Accent from '@/components/Accent';
 import Button from '@/components/buttons/Button';
 import ButtonStatus from '@/components/buttons/ButtonStatus';
-
-import { AppContext } from '@/context/AppContext';
 
 import { ContactUsFormData, statusType } from '@/types/types';
 
 type ContactUsCardProps = {
   className?: string;
-  title?: string;
-  description: string;
 };
 
-export default function ContactUsCard({
-  className,
-  title,
-  description,
-}: ContactUsCardProps) {
-  const { translations: t } = useContext(AppContext);
+export default function ContactUsCard({ className }: ContactUsCardProps) {
   const { register, handleSubmit, reset } = useForm<ContactUsFormData>();
   const [status, setStatus] = useState<statusType>('idle');
 
@@ -47,13 +37,14 @@ export default function ContactUsCard({
 
   return (
     <div className={clsx('rounded p-10', className)}>
-      <h3 className='mt-2'>
-        <Accent>{title ?? t['contact-us-title']}</Accent>
-      </h3>
       <div className='mt-2 flex flex-col gap-10 md:flex-row'>
         <div className='basis-1/2'>
-          <p className='mt-2 text-justify text-gray-700 dark:text-gray-300'>
-            {description}
+          <p className='mt-2 text-justify  text-lg text-gray-700 dark:text-gray-300'>
+            We are Christians who desire to enjoy our Lord exceedingly, and wish
+            that as many people as possible enter into the same enjoyment.
+            Should you wish to meet with us, please contact us by leaving us a
+            message and your details on the right, so that we may give you the
+            relevant information to attend any of our meetings in Newcastle.
           </p>
         </div>
         <form
@@ -71,7 +62,7 @@ export default function ContactUsCard({
                 'focus:border-primary-300 focus:outline-none focus:ring-0 dark:focus:border-primary-300'
               )}
               type='text'
-              placeholder={t['contact-us-name']}
+              placeholder={'Name'}
               required
             />
             <input
@@ -84,7 +75,7 @@ export default function ContactUsCard({
                 'focus:border-primary-300 focus:outline-none focus:ring-0 dark:focus:border-primary-300'
               )}
               type='text'
-              placeholder={t['contact-us-phone']}
+              placeholder={'Phone'}
               required
             />
             <input
@@ -97,7 +88,7 @@ export default function ContactUsCard({
                 'focus:border-primary-300 focus:outline-none focus:ring-0 dark:focus:border-primary-300'
               )}
               type='email'
-              placeholder={t['contact-us-email']}
+              placeholder={'Email'}
               required
             />
             <textarea
@@ -110,7 +101,7 @@ export default function ContactUsCard({
                 'text-sm md:text-base',
                 'focus:border-primary-300 focus:outline-none focus:ring-0 dark:focus:border-primary-300'
               )}
-              placeholder={t['contact-us-leave-us-a-message']}
+              placeholder={'Leave a message'}
               required
             />
 

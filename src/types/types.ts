@@ -1,3 +1,12 @@
+import { ReactNode } from 'react';
+import { IconType } from 'react-icons';
+
+declare module 'react-tippy' {
+  export interface TooltipProps {
+    children: ReactNode;
+  }
+}
+
 export type statusType = 'idle' | 'loading' | 'success' | 'error';
 
 export type setStatusType = (status: statusType) => void;
@@ -22,10 +31,10 @@ export type PostType = {
   body: string;
   tags: string[];
   dateCreated: string;
-  dateUpdated: string | null;
+  dateUpdated?: string | null;
   start: string | null;
-  end: string | null;
-  rank: number | null;
+  end?: string | null;
+  rank?: number | null;
 };
 
 export type Translation = {
@@ -51,16 +60,16 @@ export type OurBelief = {
 };
 
 export type OurLife = {
-  icon: string | null;
+  icon?: IconType;
   title: string;
   description: string;
-  header: boolean;
+  header?: boolean;
 };
 
 export type Links = Link[];
 
 export type AppContextType = {
-  translations: Translations;
+  translations?: Translations;
   links?: Links;
   memberPassword?: string;
   settings: Settings;

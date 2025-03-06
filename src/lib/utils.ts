@@ -30,7 +30,7 @@ export function sortByTitle<T extends Array<PostType>>(contents: T): T {
  * Get tags of each post and remove duplicates
  */
 export function getTags<T extends Array<PostType>>(contents: T) {
-  const tags = contents.reduce(
+  const tags = contents?.reduce(
     (accTags: string[], content) => [...accTags, ...content.tags],
     []
   );

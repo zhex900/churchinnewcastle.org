@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import CopyToClipboard from 'react-copy-to-clipboard';
 import { FiMail, FiMapPin, FiPhoneCall } from 'react-icons/fi';
 
@@ -7,29 +7,19 @@ import BaseTooltip from '@/components/tooltip/BaseTooltip';
 
 import { COPY_CLIPBOARD_RESET } from '@/constants';
 
-import { Translations } from '@/types/types';
-
 type ContactUsProps = {
   email: string;
   address: string;
   phone: string;
-  translations: Translations;
 };
 
 export default function ContactUsLinks({
   email,
   address,
   phone,
-  translations: t,
 }: ContactUsProps) {
-  const [copyStatus, setCopyStatus] = useState(`${t['common-click-to-copy']} `);
-  const [copiedToClipBoard, setCopiedToClipBoard] = useState(
-    `${t['common-copied-to-clipboard']} `
-  );
-  useEffect(() => {
-    setCopyStatus(t['common-click-to-copy']);
-    setCopiedToClipBoard(t['common-copied-to-clipboard']);
-  }, [t]);
+  const [copyStatus, setCopyStatus] = useState(`Click to copy`);
+  const copiedToClipBoard = `Copied to clipboard`;
 
   const contactUs = [
     {
@@ -79,7 +69,10 @@ export default function ContactUsLinks({
               aria-label={`${contact.id}`}
               className='rounded-sm align-middle focus:outline-none focus-visible:ring focus-visible:ring-primary-300'
             >
-              <contact.icon className='h-7 w-7 align-middle text-gray-600 hover:text-primary-300 dark:text-gray-300 dark:hover:text-primary-300' />
+              {contact.icon({
+                className:
+                  'h-7 w-7 align-middle text-gray-600 hover:text-primary-300 dark:text-gray-300 dark:hover:text-primary-300',
+              })}
             </button>
           </CopyToClipboard>
         </BaseTooltip>

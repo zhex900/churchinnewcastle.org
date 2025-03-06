@@ -22,8 +22,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        primary: ['SortsMillGoudy', ...fontFamily.sans],
-        secondary: ['Karla', 'SortsMillGoudy', ...fontFamily.sans],
+        primary: ['Inter', ...fontFamily.sans],
+        secondary: ['Inter', ...fontFamily.sans],
       },
       fontSize: {
         sm: ['0.875rem', '2rem'],

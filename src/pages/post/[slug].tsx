@@ -9,7 +9,7 @@ import useProtectPage from '@/hooks/useProtectPage';
 import MembersPassword from '@/components/MembersPassword';
 import Post from '@/components/Post';
 
-import { getPostBySlug, getTranslationsByNamespace } from '@/cms';
+import { getPostBySlug } from '@/cms';
 import { getPostsSlugs, getSettings } from '@/cms';
 import { AppContext } from '@/context/AppContext';
 
@@ -106,10 +106,7 @@ export async function getStaticProps({
         locale || 'en'
       ),
       settings: await getSettings(),
-      translations: await getTranslationsByNamespace(
-        ['post', 'common'],
-        locale || 'en'
-      ),
+      translations: {},
     },
   };
 }
