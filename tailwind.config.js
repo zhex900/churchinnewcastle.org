@@ -12,11 +12,7 @@ function withOpacity(variableName) {
 
 /** @type {import("@types/tailwindcss/tailwind-config").TailwindConfig } */
 module.exports = {
-  content: [
-    './src/**/*.{js,jsx,ts,tsx}',
-    './node_modules/flowbite/**/*.js',
-    './node_modules/flowbite-react/**/*.js',
-  ],
+  content: ['./src/**/*.{js,jsx,ts,tsx}'],
   darkMode: 'class',
 
   theme: {
@@ -76,9 +72,5 @@ module.exports = {
       },
     },
   },
-  plugins: [
-    require('flowbite/plugin'),
-    require('@tailwindcss/forms'),
-    require('@tailwindcss/typography'),
-  ],
+  plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography')],
 };

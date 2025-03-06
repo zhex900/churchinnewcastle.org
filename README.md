@@ -15,7 +15,6 @@
 - Nextjs
 - Typescript
 - Tailwind CSS
-- Flowbite UI components
 
 ## CMS
 - Directus Headless CMS

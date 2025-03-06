@@ -3,7 +3,7 @@ import CopyToClipboard from 'react-copy-to-clipboard';
 import { FiMail, FiMapPin, FiPhoneCall } from 'react-icons/fi';
 
 import Accent from '@/components/Accent';
-import BaseTooltip from '@/components/tooltip/BaseTooltip';
+import Tooltip from '@/components/Tooltip';
 
 import { COPY_CLIPBOARD_RESET } from '@/constants';
 
@@ -46,10 +46,10 @@ export default function ContactUsLinks({
       className='mt-8 flex items-center justify-center space-x-4 pt-2'
     >
       {contactUs.map((contact) => (
-        <BaseTooltip
+        <Tooltip
           key={contact.id}
           aria-label={`${contact.id} tooltip`}
-          content={
+          tipChildren={
             <div>
               {`${copyStatus} `}
               <Accent className='inline-block font-medium'>
@@ -75,7 +75,7 @@ export default function ContactUsLinks({
               })}
             </button>
           </CopyToClipboard>
-        </BaseTooltip>
+        </Tooltip>
       ))}
     </div>
   );
