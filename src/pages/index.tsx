@@ -136,7 +136,7 @@ export default function IndexPage({
                     Christians.
                   </div>
                 </div>
-                <div className='h-full w-full pl-40 '>
+                <div className='h-full w-full md:pl-20 '>
                   <Carousel autoSlide={true}>
                     {[
                       ...homePageAboutUsSlides.map((url) => (
