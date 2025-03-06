@@ -6,6 +6,8 @@ import useMediaQuery from '@/hooks/useMediaQuery';
 
 import UnstyledLink from '@/components/links/UnstyledLink';
 
+import { headerLinks } from '@/content';
+
 import ThemeButton from '../buttons/ThemeButton';
 import Logo from '../images/Logo';
 import PreviewTopBar from '../PreviewTopBar';
@@ -90,10 +92,3 @@ export default function Header({ large = false }: HeaderProps) {
     </header>
   );
 }
-
-export const headerLinks = [
-  { href: '/our-belief', mobile: false, label: 'Our belief' },
-  { href: '/posts/truth-talks', mobile: true, label: 'Truth talks' },
-  { href: '/posts/events', mobile: true, label: 'Events' },
-  { href: '/contact-us', mobile: false, label: 'Contact us' },
-];
