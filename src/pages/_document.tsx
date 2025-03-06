@@ -21,8 +21,6 @@ class MyDocument extends Document {
             rel='apple-touch-icon'
             href='/favicon/apple-icon-180x180.png'
           ></link>
-
-          <meta name='theme-color' content='#222' />
           <Script
             src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_ANALYTICS_ID}`}
             strategy='afterInteractive'

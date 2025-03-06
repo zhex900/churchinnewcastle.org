@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
+import { useTheme } from 'next-themes';
 
 import { SITE_TITLE } from '@/constants';
 import { domain } from '@/content';
@@ -22,10 +23,10 @@ type SeoProps = {
 } & Partial<typeof defaultMeta>;
 
 export default function Seo(props: SeoProps) {
+  const { theme } = useTheme();
   defaultMeta.siteName = domain;
   defaultMeta.url = `https://${domain}/`;
   defaultMeta.image = `https://${domain}/favicon/apple-icon-180x180.png`;
-
   const router = useRouter();
   const meta = {
     ...defaultMeta,
@@ -48,7 +49,10 @@ export default function Seo(props: SeoProps) {
       <meta property='og:description' content={meta.description} />
       <meta property='og:title' content={meta.title} />
 
-      <meta name='theme-color' content='#ffffff' />
+      <meta
+        name='theme-color'
+        content={`${theme === 'dark' ? '#222222' : '#fff'}`}
+      />
       <link rel='icon' href='/favicon/favicon.ico' sizes='any' />
       <link rel='icon' href='/favicon/favicon.svg' type='image/svg+xml' />
       <link rel='mask-icon' href='/favicon/favicon.svg' color='#000000' />

@@ -23,6 +23,6 @@
     "types": ["node", "vitest/globals", "cypress"]
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules", "infrastructure"],
+  "exclude": ["node_modules", "infrastructure", "sanity"],
   "moduleResolution": ["node_modules", ".next", "node"]
 }
